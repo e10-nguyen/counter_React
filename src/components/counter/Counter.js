@@ -5,18 +5,22 @@ import './Counter.css'
 // Read through the logic to find and correct the errors.
 // Some errors may be in Counter.css
 
-const CounterButton = ({ increment, updateCount }) => {
+const CounterButton = ({ increment, updateCount, shouldRun=true}) => {
     const displayText = 
-        increment > 0 ? '+' : 
-            increment < 0 ? '-' : 
+        increment < 0 ? '+' : 
+            increment > 0 ? '-' : 
             ' ';
-    return (
-        <button className="counter-button" onClick={() => updateCount(increment)}>{displayText}</button>
+
+    if (!shouldRun) {
+        return <div />
+    }
+    return ( 
+        <button className="counter-butt" onClick={() => updateCount(increment)}>{displayText}</button>
     )
 }   
 
 const Counter = () => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState("0");
     const updateCount = (increment) => {
         setCount(count => count + increment)
     }
@@ -27,8 +31,8 @@ const Counter = () => {
             <p>The <span className="bold">Counter</span> component is broken. Fix it to complete the lab.</p>
             <div className="counter-row">
                 <CounterButton increment={-1} updateCount={updateCount} />
-                <div className="counter-value">{count}</div>
-                <CounterButton increment={1} updateCount={updateCount} />
+                <div className="counter-val">{count}</div>
+                <CounterButton increment={1} updateCount={updateCount} shouldRun={false}/>
             </div>
 
         </div>

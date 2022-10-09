@@ -2,13 +2,13 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .counter-wrapper {
-    width: 50%;
-    height: 50%;
+    width: 50%px;
+    height: 50%px;
     display: flex;
     flex-direction: column;
     justify-content: center;
